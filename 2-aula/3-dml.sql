@@ -9,4 +9,4 @@ DELETE FROM funcionarios WHERE codf = 4;
 -- 5) As consultas após as 19 horas devem ser excluídas
 DELETE FROM consultas WHERE hora > '19:00:00';
 -- 6) Os médicos que residem em Biguacu e Palhoca devem ser excluídos
-DELETE FROM medicos WHERE cidade IN ('Biguaçu', 'Palhoca');
+DELETE FROM medicos WHERE cidade IN ('Biguacu', 'Palhoca');

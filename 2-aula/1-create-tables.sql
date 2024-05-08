@@ -1,53 +1,53 @@
-create table Ambulatorios
+CREATE TABLE ambulatorios
 (
-    nroa       int,
-    andar      numeric(2) not null,
-    capacidade smallint,
-    primary key (nroa)
+    nroa       INT,
+    andar      NUMERIC(2) NOT NULL,
+    capacidade SMALLINT,
+    PRIMARY KEY (nroa)
 );
 
-create table Medicos
+CREATE TABLE medicos
 (
-    codm          int,
-    nome          varchar(40) not null,
-    idade         smallint    not null,
-    cidade        varchar(40),
-    CPF           numeric(11) not null unique,
-    especialidade varchar(30),
-    nroa          int,
-    primary key (codm),
-    foreign key (nroa) references Ambulatorios
+    codm          INT,
+    nome          VARCHAR(40) NOT NULL,
+    idade         SMALLINT    NOT NULL,
+    cidade        VARCHAR(40),
+    cpf           NUMERIC(11) NOT NULL UNIQUE,
+    especialidade VARCHAR(30),
+    nroa          INT,
+    PRIMARY KEY (codm),
+    FOREIGN KEY (nroa) REFERENCES ambulatorios
 );
 
-create table Pacientes
+CREATE TABLE pacientes
 (
-    codp   int,
-    nome   varchar(40) not null,
-    idade  smallint    not null,
-    cidade varchar(40),
-    CPF    numeric(11) not null unique,
-    doenca varchar(40) not null,
-    primary key (codp)
+    codp   INT,
+    nome   VARCHAR(40) NOT NULL,
+    idade  SMALLINT    NOT NULL,
+    cidade VARCHAR(40),
+    cpf    NUMERIC(11) NOT NULL UNIQUE,
+    doenca VARCHAR(40) NOT NULL,
+    PRIMARY KEY (codp)
 );
 
-create table Funcionarios
+CREATE TABLE funcionarios
 (
-    codf    int,
-    nome    varchar(40) not null,
-    idade   smallint    not null,
-    cidade  varchar(40),
-    CPF     numeric(11) not null unique,
-    salario numeric(10),
-    primary key (codf)
+    codf    INT,
+    nome    VARCHAR(40) NOT NULL,
+    idade   SMALLINT    NOT NULL,
+    cidade  VARCHAR(40),
+    cpf     NUMERIC(11) NOT NULL UNIQUE,
+    salario NUMERIC(10),
+    PRIMARY KEY (codf)
 );
 
-create table Consultas
+CREATE TABLE consultas
 (
-    codm int,
-    codp int,
-    data date,
-    hora time,
-    primary key (codm, codp, data),
-    foreign key (codm) references Medicos,
-    foreign key (codp) references Pacientes
+    codm INT,
+    codp INT,
+    data DATE,
+    hora TIME,
+    PRIMARY KEY (codm, codp, data),
+    FOREIGN KEY (codm) REFERENCES medicos,
+    FOREIGN KEY (codp) REFERENCES pacientes
 );

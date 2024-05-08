@@ -1,49 +1,49 @@
-create table ambulatorios
+CREATE TABLE ambulatorios
 (
-    nroa       int        not null primary key,
-    andar      numeric(2) not null,
-    capacidade smallint
+    nroa       INT        NOT NULL PRIMARY KEY,
+    andar      NUMERIC(2) NOT NULL,
+    capacidade SMALLINT
 );
-create table medicos
+CREATE TABLE medicos
 (
-    codm          int         not null primary key,
-    nome          varchar(50) not null,
-    idade         smallint    not null,
-    cidade        varchar(40),
-    cpf           numeric(11) not null unique,
-    especialidade varchar(30),
-    nroa          int,
+    codm          INT         NOT NULL PRIMARY KEY,
+    nome          VARCHAR(50) NOT NULL,
+    idade         SMALLINT    NOT NULL,
+    cidade        VARCHAR(40),
+    cpf           NUMERIC(11) NOT NULL UNIQUE,
+    especialidade VARCHAR(30),
+    nroa          INT,
     FOREIGN KEY (nroa) REFERENCES ambulatorios (nroa)
 );
-create table pacientes
+CREATE TABLE pacientes
 (
-    codp   int         not null primary key,
-    nome   varchar(40) not null,
-    idade  smallint    not null,
-    cidade varchar(40),
-    cpf    numeric(11) not null unique,
-    doenca varchar(40) not null
+    codp   INT         NOT NULL PRIMARY KEY,
+    nome   VARCHAR(40) NOT NULL,
+    idade  SMALLINT    NOT NULL,
+    cidade VARCHAR(40),
+    cpf    NUMERIC(11) NOT NULL UNIQUE,
+    doenca VARCHAR(40) NOT NULL
 );
-create table funcionarios
+CREATE TABLE funcionarios
 (
-    codf    int         not null primary key,
-    nome    varchar(40) not null,
-    idade   smallint    not null,
-    cidade  varchar(40),
-    cpf     numeric(11) not null unique,
-    salario numeric(10) not null,
-    cargo   varchar(40)
+    codf    INT         NOT NULL PRIMARY KEY,
+    nome    VARCHAR(40) NOT NULL,
+    idade   SMALLINT    NOT NULL,
+    cidade  VARCHAR(40),
+    cpf     NUMERIC(11) NOT NULL UNIQUE,
+    salario NUMERIC(10) NOT NULL,
+    cargo   VARCHAR(40)
 );
-create table consultas
+CREATE TABLE consultas
 (
-    codm int,
-    codp int,
-    data date,
-    hora time,
+    codm INT,
+    codp INT,
+    data DATE,
+    hora TIME,
     PRIMARY KEY (codm, codp, data),
     FOREIGN KEY (codm) REFERENCES medicos (codm),
     FOREIGN KEY (codp) REFERENCES pacientes (codp)
 );
-alter table funcionarios
-    drop column cargo;
-create index idx_cidade on pacientes (cidade);
+ALTER TABLE funcionarios
+    DROP COLUMN cargo;
+CREATE INDEX idx_cidade ON pacientes (cidade);
