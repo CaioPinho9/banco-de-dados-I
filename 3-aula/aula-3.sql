@@ -8,13 +8,13 @@ SELECT nome, idade FROM pacientes WHERE cidade != 'Florianopolis';
 SELECT nome, idade * 12 FROM pacientes;
 
 -- 4) Qual o horário da última consulta marcada para o dia 13/10/2020?
-SELECT hora AS horario FROM consultas WHERE data = '2020/10/13' ORDER BY hora DESC LIMIT 1;
+SELECT hora horario FROM consultas WHERE data = '2020/10/13' ORDER BY hora DESC LIMIT 1;
 
 -- 5) Qual a média de idade dos médicos e o total de ambulatórios atendidos por eles?
-SELECT AVG(idade) AS media_de_idade, COUNT(nroa) AS total_de_ambulatorios FROM medicos;
+SELECT AVG(idade) media_de_idade, COUNT(nroa) total_de_ambulatorios FROM medicos;
 
 -- 6) Buscar o código, o nome e o salário líquido dos funcionários. O salário líquido é o salário cadastrado menos 20%
-SELECT codf AS codigo, nome, salario * 0.8 AS salario_liquido FROM funcionarios;
+SELECT codf codigo, nome, salario * 0.8 salario_liquido FROM funcionarios;
 
 -- 7) Buscar o nome dos funcionários que terminam com a letra 'a'
 SELECT nome FROM funcionarios WHERE nome LIKE '%a';
@@ -23,7 +23,7 @@ SELECT nome FROM funcionarios WHERE nome LIKE '%a';
 SELECT nome, especialidade FROM medicos WHERE SUBSTRING(nome, 2, 1) = 'o' AND RIGHT(nome, 1) = 'o';
 
 -- 9) Buscar os códigos e nomes dos pacientes com mais de 25 anos que estão com tendinite, fratura, gripe ou sarampo
-SELECT codp AS codigo, nome FROM pacientes WHERE idade > 25 AND doenca IN ('tendinite', 'fratura', 'gripe', 'sarampo');
+SELECT codp codigo, nome FROM pacientes WHERE idade > 25 AND doenca IN ('tendinite', 'fratura', 'gripe', 'sarampo');
 
 -- 10) Buscar os CPFs, nomes e idades de todas as pessoas (médicos, pacientes ou funcionários) que residem em Florianópolis
 SELECT cpf, nome, idade
